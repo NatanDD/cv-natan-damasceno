@@ -1,70 +1,493 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Natan Damasceno - CV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Natan Damasceno - Curriculum Vitae</title>
   <style>
-    body { font-family: Arial, sans-serif; max-width: 900px; margin: auto; padding: 30px; line-height: 1.6; color: #333; }
-    h1 { font-size: 28px; margin-bottom: 0; }
-    h2 { margin-top: 30px; border-bottom: 1px solid #ccc; padding-bottom: 5px; color: #2a2a2a; }
-    h3 { margin-bottom: 5px; margin-top: 20px; }
-    ul { margin: 0; padding-left: 20px; }
-    p { margin: 10px 0; }
-    .contact { font-size: 15px; margin-bottom: 20px; }
+    :root {
+      --primary-color: #0a66c2;
+      --secondary-color: #f0f2f5;
+      --text-color: #333;
+      --light-text: #555;
+      --border-color: #ddd;
+      --highlight: #e6f0fa;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: #f7f9fc;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: white;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, var(--primary-color), #0d4d8c);
+      color: white;
+      padding: 40px;
+      text-align: left;
+      position: relative;
+    }
+    
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+      font-size: 0.95rem;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .contact-item i {
+      font-size: 1.2rem;
+    }
+    
+    .content {
+      padding: 40px;
+    }
+    
+    section {
+      margin-bottom: 40px;
+    }
+    
+    h2 {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 100%;
+      background: var(--primary-color);
+    }
+    
+    .job {
+      margin-bottom: 25px;
+      padding: 0 0 5px 0;
+    }
+    
+    .job:last-child {
+      margin-bottom: 0;
+    }
+    
+    h3 {
+      font-size: 1.2rem;
+      color: #222;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    
+    .job-title {
+      font-weight: 600;
+    }
+    
+    .job-company {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    
+    .job-date {
+      font-size: 0.9rem;
+      color: var(--light-text);
+      font-weight: 400;
+    }
+    
+    .job-description {
+      margin-top: 10px;
+      padding-left: 0;
+    }
+    
+    ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+    
+    li {
+      margin-bottom: 8px;
+    }
+    
+    li:last-child {
+      margin-bottom: 0;
+    }
+    
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    a:hover {
+      color: #074a8c;
+      text-decoration: underline;
+    }
+    
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 10px;
+    }
+    
+    .skill {
+      background-color: var(--highlight);
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+    }
+    
+    .summary {
+      padding: 15px;
+      background-color: var(--secondary-color);
+      border-left: 4px solid var(--primary-color);
+      margin-bottom: 30px;
+    }
+    
+    .summary p {
+      margin: 0;
+      line-height: 1.7;
+    }
+    
+    /* Language selector */
+    .language-selector {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+    }
+    
+    .language-btn {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+    
+    .language-btn:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .language-btn.active {
+      background-color: white;
+      color: var(--primary-color);
+    }
+    
+    [lang="en"] {
+      display: none;
+    }
+    
+    body.lang-en [lang="pt"] {
+      display: none;
+    }
+    
+    body.lang-en [lang="en"] {
+      display: block;
+    }
+    
+    body.lang-en li[lang="en"] {
+      display: list-item;
+    }
+    
+    body.lang-en .job-title[lang="en"],
+    body.lang-en .skill[lang="en"] {
+      display: inline-block;
+    }
+    
+    @media print {
+      body {
+        background-color: white;
+      }
+      
+      .container {
+        box-shadow: none;
+      }
+      
+      .header {
+        background: var(--primary-color) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      
+      .language-selector {
+        display: none;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .header {
+        padding: 30px;
+      }
+      
+      .content {
+        padding: 20px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .language-selector {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-top: 20px;
+        justify-content: center;
+      }
+    }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 </head>
 <body>
-
-  <h1>NATAN DA SILVA DAMASCENO</h1>
-  <div class="contact">
-    Brazilian, 34 years old<br>
-    Butantã – São Paulo – SP – Brazil<br>
-    Mobile: +55 (11) 9595-10100<br>
-    Landline: +55 (11) 3781-3076<br>
-    Email: natan.90@hotmail.com<br>
-    LinkedIn: <a href="https://www.linkedin.com/in/natandamasceno">https://www.linkedin.com/in/natandamasceno/</a>
+  <div class="container">
+    <div class="header">
+      <h1>NATAN DA SILVA DAMASCENO</h1>
+      <div class="language-selector">
+        <button class="language-btn active" onclick="changeLanguage('pt')">Português</button>
+        <button class="language-btn" onclick="changeLanguage('en')">English</button>
+      </div>
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Butantã – São Paulo – SP – Brasil</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-mobile-alt"></i>
+          <span>+55 (11) 9595-10100</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <span>+55 (11) 3781-3076</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <span><a href="mailto:natan.90@hotmail.com" style="color: white;">natan.90@hotmail.com</a></span>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-linkedin"></i>
+          <span><a href="https://www.linkedin.com/in/natandamasceno" target="_blank" style="color: white;">linkedin.com/in/natandamasceno</a></span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="content">
+      <section>
+        <h2 lang="pt">RESUMO PROFISSIONAL</h2>
+        <h2 lang="en">PROFESSIONAL SUMMARY</h2>
+        <div class="summary">
+          <p lang="pt">Economista com sete anos de experiência no setor financeiro, com sólida atuação como analista financeiro, consultor de negócios e profissional de relacionamento com clientes. Ao longo da minha carreira, desenvolvi expertise em planejamento financeiro, estruturação orçamentária, gestão de fluxo de caixa, transição para regime de competência, conciliações bancárias e contábeis, e relacionamento com instituições financeiras. Participei de projetos estratégicos com foco na reestruturação de processos, melhoria da eficiência operacional e implementação de controles financeiros.</p>
+          
+          <p lang="en">Economist with seven years of experience in the financial sector, with solid expertise as a financial analyst, business consultant, and client relationship professional. Throughout my career, I have developed expertise in financial planning, budget structuring, cash flow management, transition to accrual basis, bank and accounting reconciliations, and relationships with financial institutions. I have participated in strategic projects focused on process restructuring, improving operational efficiency, and implementing financial controls.</p>
+        </div>
+      </section>
+      
+      <section>
+        <h2 lang="pt">FORMAÇÃO ACADÊMICA</h2>
+        <h2 lang="en">EDUCATION</h2>
+        <ul>
+          <li lang="pt">Pós-graduação em Finanças Corporativas e Investment Banking, FIA Business School – Previsão de conclusão: Jul/2025.</li>
+          <li lang="pt">Bacharelado em Economia, Universidade Presbiteriana Mackenzie – Concluído: Dez/2017 – Curso noturno.</li>
+          
+          <li lang="en">Postgraduate in Corporate Finance and Investment Banking, FIA Business School – Expected completion: Jul/2025.</li>
+          <li lang="en">Bachelor's Degree in Economics, Mackenzie Presbyterian University – Graduated: Dec/2017 – Evening course.</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2 lang="pt">EXPERIÊNCIA PROFISSIONAL</h2>
+        <h2 lang="en">PROFESSIONAL EXPERIENCE</h2>
+        
+        <div class="job">
+          <h3>
+            <span class="job-company">Ecovis WFA</span>
+            <span class="job-date" lang="pt">Jan/2025 – Presente</span>
+            <span class="job-date" lang="en">Jan/2025 – Present</span>
+          </h3>
+          <div class="job-title" lang="pt">Consultor de Negócios</div>
+          <div class="job-title" lang="en">Business Consultant</div>
+          <div class="job-description">
+            <p lang="pt">Envolvimento estratégico em projetos de consultoria empresarial com foco na estruturação orçamentária e financeira. Responsável pelo desenvolvimento e implementação de modelos de orçamento corporativo, transição bem-sucedida para o regime de competência, reorganização do plano de contas e fortalecimento dos controles financeiros da organização. Suporte direto na tomada de decisões por meio de análises detalhadas de desempenho, identificação de ineficiências e criação de soluções para maximizar resultados. Contribuição ativa para o crescimento sustentável e a melhoria contínua dos processos financeiros.</p>
+            
+            <p lang="en">Strategic involvement in business consulting projects with a focus on budgetary and financial structuring. Responsible for the development and implementation of corporate budget models, successful transition to the accrual basis, reorganization of the chart of accounts, and strengthening of the organization's financial controls. Direct support in decision-making through detailed performance analysis, identification of inefficiencies, and creation of solutions to maximize results. Active contribution to sustainable growth and continuous improvement of financial processes.</p>
+          </div>
+        </div>
+        
+        <div class="job">
+          <h3>
+            <span class="job-company">Creditas</span>
+            <span class="job-date">Jan/2021 – Ago/2023</span>
+          </h3>
+          <div class="job-title" lang="pt">Analista Financeiro</div>
+          <div class="job-title" lang="en">Financial Analyst</div>
+          <div class="job-description">
+            <p lang="pt">Atuação na otimização de processos internos, controles para garantir a conformidade com normas contábeis e regulatórias, e suporte às áreas relacionadas à cessão e desembolso de crédito. Responsável pela validação e processamento de dados, esclarecimento de dúvidas relacionadas a processos para equipes de negócios, execução de pagamentos, gestão de conciliações bancárias e manutenção de relacionamentos com bancos.</p>
+            
+            <p lang="en">Worked on internal process optimization, controls to ensure compliance with accounting and regulatory standards, and supported areas related to credit assignment and disbursement. Responsible for validating and processing data, clarifying process-related questions to business teams, executing payments, managing bank reconciliations, and maintaining relationships with banks.</p>
+          </div>
+        </div>
+        
+        <div class="job">
+          <h3>
+            <span class="job-company">Creditas</span>
+            <span class="job-date">Set/2019 – Dez/2020</span>
+          </h3>
+          <div class="job-title" lang="pt">Consultor de Home Equity</div>
+          <div class="job-title" lang="en">Home Equity Consultant</div>
+          <div class="job-description">
+            <p lang="pt">Identificação das necessidades de crédito dos clientes e oferta de soluções financeiras personalizadas por meio de vendas consultivas. Gestão de carteira de clientes, coleta de documentos, manutenção de registros internos, garantia de uma experiência excepcional do cliente e formalização de propostas de crédito.</p>
+            
+            <p lang="en">Identified clients' credit needs and offered tailored financial solutions through consultative sales. Managed a portfolio of clients, handled document collection, maintained internal records, ensured an exceptional client experience, and formalized credit proposals.</p>
+          </div>
+        </div>
+        
+        <div class="job">
+          <h3>
+            <span class="job-company">Trustvox</span>
+            <span class="job-date">Jan/2018 – Ago/2018</span>
+          </h3>
+          <div class="job-title" lang="pt">Customer Success</div>
+          <div class="job-title" lang="en">Customer Success</div>
+          <div class="job-description">
+            <p lang="pt">Compreensão dos negócios e processos internos dos clientes para maximizar o uso da nossa ferramenta. Treinamento de usuários, monitoramento de desempenho e engajamento, atuação como intermediário entre clientes e equipe técnica, e criação de relatórios e apresentações focados na melhoria da produtividade, ROI e redução de churn.</p>
+            
+            <p lang="en">Understood client businesses and internal processes to maximize usage of our tool. Trained users, monitored performance and engagement, acted as a liaison between clients and the technical team, and created reports and presentations focused on improving productivity, ROI, and reducing churn.</p>
+          </div>
+        </div>
+        
+        <div class="job">
+          <h3>
+            <span class="job-company">Trustvox</span>
+            <span class="job-date">Mar/2017 – Dez/2017</span>
+          </h3>
+          <div class="job-title" lang="pt">Inside Sales</div>
+          <div class="job-title" lang="en">Inside Sales</div>
+          <div class="job-description">
+            <p lang="pt">Geração de novos negócios por meio de técnicas de vendas outbound e inbound, seguindo a metodologia Predictable Revenue. Responsável pela prospecção, qualificação e fechamento de novos clientes, e preparação de propostas comerciais.</p>
+            
+            <p lang="en">Generated new business through outbound and inbound sales techniques, following the Predictable Revenue methodology. Responsible for prospecting, qualifying, and closing new clients, and preparing commercial proposals.</p>
+          </div>
+        </div>
+        
+        <div class="job">
+          <h3>
+            <span class="job-company">Banco Citibank SA</span>
+            <span class="job-date">Set/2014 – Jul/2016</span>
+          </h3>
+          <div class="job-title" lang="pt">Estagiário de Vendas</div>
+          <div class="job-title" lang="en">Sales Intern</div>
+          <div class="job-description">
+            <p lang="pt">Suporte às operações diárias de atendimento ao cliente, assistência aos gerentes de contas com processos internos (operações, contratos, waivers), atendimento a solicitações internas de dados (receitas, saldos, volumes transacionais, taxas) e acompanhamento da implementação de produtos TTS – Treasury and Trade Solutions (Pagamentos, Cobranças, Contas Internacionais, etc.).</p>
+            
+            <p lang="en">Supported daily client service operations, assisted account managers with internal processes (operations, contracts, waivers), handled internal data requests (revenues, balances, transactional volumes, fees), and followed up on implementation of TTS – Treasury and Trade Solutions products (Payments, Collections, International Accounts, etc.).</p>
+          </div>
+        </div>
+      </section>
+      
+      <section>
+        <h2 lang="pt">QUALIFICAÇÕES E INFORMAÇÕES ADICIONAIS</h2>
+        <h2 lang="en">QUALIFICATIONS AND ADDITIONAL INFORMATION</h2>
+        
+        <div class="skills">
+          <div class="skill" lang="pt">Inglês: Avançado</div>
+          <div class="skill" lang="pt">Espanhol: Avançado</div>
+          <div class="skill" lang="pt">Office Suite: Avançado</div>
+          <div class="skill">SQL</div>
+          <div class="skill" lang="pt">Python: Avançado</div>
+          <div class="skill">CPA 20 – ANBIMA</div>
+          
+          <div class="skill" lang="en">English: Advanced</div>
+          <div class="skill" lang="en">Spanish: Advanced</div>
+          <div class="skill" lang="en">Office Suite: Advanced</div>
+          <div class="skill" lang="en">Python: Advanced</div>
+        </div>
+        
+        <h3 style="margin-top: 25px;" lang="pt">Experiências Internacionais</h3>
+        <h3 style="margin-top: 25px;" lang="en">International Experiences</h3>
+        
+        <ul>
+          <li lang="pt"><strong>Chile (Set/2023 – Dez/2023):</strong> Trabalho em hostel para aperfeiçoamento do espanhol e intercâmbio cultural, realizando diversas tarefas incluindo recepção de clientes (check-in, check-out).</li>
+          <li lang="pt"><strong>África do Sul (Nov/2018 – Fev/2019):</strong> Trabalho em dois hostels para aperfeiçoamento do inglês e intercâmbio cultural, realizando diversas tarefas incluindo recepção de clientes (check-in, check-out) e funções de bartender.</li>
+          
+          <li lang="en"><strong>Chile (Sep/2023 – Dec/2023):</strong> Worked in a hostel to improve Spanish and for cultural exchange, performing various tasks including customer reception (check-in, check-out).</li>
+          <li lang="en"><strong>South Africa (Nov/2018 – Feb/2019):</strong> Worked in two hostels to improve English and for cultural exchange, performing various tasks including customer reception (check-in, check-out) and bartender duties.</li>
+        </ul>
+      </section>
+    </div>
   </div>
-
-  <h2>SUMMARY</h2>
-  <p>Economist with seven years of experience in the financial sector, with solid experience as a financial analyst, business consultant, and client relationship professional. Throughout my career, I have developed expertise in financial planning, budget structuring, cash flow management, transition to accrual basis, bank and accounting reconciliations, and relationships with financial institutions. I have participated in strategic projects focused on process restructuring, improving operational efficienc...
-
-
-  <h2>EDUCATION</h2>
-  <ul>
-    <li>Postgraduate in Corporate Finance and Investment Banking, FIA Business School – Expected completion: Jul/2025.</li>
-    <li>Bachelor’s Degree in Economics, Mackenzie Presbyterian University – Graduated: Dec/2017 – Evening course.</li>
-  </ul>
-
-  <h2>PROFESSIONAL EXPERIENCE</h2>
-  <h3>Jan/2025 – Present – Ecovis WFA<br>Position: Business Consultant</h3>
-  <p>Strategic involvement in business consulting projects with a focus on budgetary and financial structuring. Responsible for the development and implementation of corporate budget models, successful transition to the accrual basis, reorganization of the chart of accounts, and strengthening of the organization's financial controls. Direct support in decision-making through detailed performance analysis, identification of inefficiencies, and creation of solutions to maximize results. Active contributio...
-
-
-  <h3>Jan/2021 – Aug/2023 – Creditas<br>Position: Financial Analyst</h3>
-  <p>Worked on internal process optimization, controls to ensure compliance with accounting and regulatory standards, and supported areas related to credit assignment and disbursement. Responsible for validating and processing data, clarifying process-related questions to business teams, executing payments, managing bank reconciliations, and maintaining relationships with banks.</p>
-
-  <h3>Sep/2019 – Dec/2020 – Creditas<br>Position: Home Equity Consultant</h3>
-  <p>Identified clients' credit needs and offered tailored financial solutions through consultative sales. Managed a portfolio of clients, handled document collection, maintained internal records, ensured an exceptional client experience, and formalized credit proposals.</p>
-
-  <h3>Jan/2018 – Aug/2018 – Trustvox<br>Position: Customer Success</h3>
-  <p>Understood client businesses and internal processes to maximize usage of our tool. Trained users, monitored performance and engagement, acted as a liaison between clients and the technical team, and created reports and presentations focused on improving productivity, ROI, and reducing churn.</p>
-
-  <h3>Mar/2017 – Dec/2017 – Trustvox<br>Position: Inside Sales</h3>
-  <p>Generated new business through outbound and inbound sales techniques, following the Predictable Revenue methodology. Responsible for prospecting, qualifying, and closing new clients, and preparing commercial proposals.</p>
-
-  <h3>Sep/2014 – Jul/2016 – Banco Citibank SA<br>Position: Sales Intern</h3>
-  <p>Supported daily client service operations, assisted account managers with internal processes (operations, contracts, waivers), handled internal data requests (revenues, balances, transactional volumes, fees), and followed up on implementation of TTS – Treasury and Trade Solutions products (Payments, Collections, International Accounts, etc.).</p>
-
-  <h2>QUALIFICATIONS AND ADDITIONAL INFORMATION</h2>
-  <ul>
-    <li>English: Advanced – private classes and exchange experience;</li>
-    <li>Spanish: Advanced – language course at Teach Me Language Center – Viña Del Mar;</li>
-    <li>Exchange – Nov/2018 – Feb/2019: worked in two hostels in South Africa to improve English and for cultural exchange, performed various tasks including customer reception (check-in, check-out) and bartender duties;</li>
-    <li>Exchange – Sep/2023 – Dec/2023: worked in a hostel in Chile to improve Spanish and for cultural exchange, performed various tasks including customer reception (check-in, check-out);</li>
-    <li>Office Suite: Advanced;</li>
-    <li>Tools: SQL, Python (Advanced);</li>
-    <li>CPA 20 – ANBIMA (Brazilian Financial and Capital Markets Association);</li>
-  </ul>
-
+  
+  <script>
+    function changeLanguage(lang) {
+      document.body.className = 'lang-' + lang;
+      
+      const buttons = document.querySelectorAll('.language-btn');
+      buttons.forEach(button => {
+        button.classList.remove('active');
+      });
+      
+      const activeButton = document.querySelector('.language-btn[onclick="changeLanguage(\'' + lang + '\')"]');
+      if (activeButton) {
+        activeButton.classList.add('active');
+      }
+      
+      // Save preference to localStorage
+      localStorage.setItem('cv-language', lang);
+    }
+    
+    // Check for saved language preference
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedLanguage = localStorage.getItem('cv-language');
+      if (savedLanguage) {
+        changeLanguage(savedLanguage);
+      }
+    });
+  </script>
 </body>
 </html>
