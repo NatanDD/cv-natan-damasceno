@@ -1,6 +1,6 @@
 # Natan Damasceno – Online CV
 
-👨‍💼 [Acesse meu currículo online]([https://natandd.github.io/cv-natan-damasceno/])
+👨‍💼 [Acesse meu currículo online](https://natandd.github.io/cv-natan-damasceno/)
 
 Este repositório contém meu currículo em HTML versão em inglês e português, publicado com GitHub Pages.
 
